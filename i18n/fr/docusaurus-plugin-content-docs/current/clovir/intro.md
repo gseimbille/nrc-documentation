@@ -3,8 +3,6 @@ title: Manuel utilisateur CLOVIR
 sidebar_position: 1
 ---
 
-![Système de clôture virtuelle CLOVIR](/img/clovir/image9.png)
-
 ## Vue d'ensemble
 Non-Relinquo Consulting (NRC) propose une solution de clôtures virtuelles de bout en bout. Cette solution comprend un collier intelligent et une application de gestion.
 

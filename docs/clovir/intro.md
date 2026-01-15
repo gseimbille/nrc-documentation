@@ -3,8 +3,6 @@ title: CLOVIR User Manual
 sidebar_position: 1
 ---
 
-![CLOVIR virtual fencing system](/img/clovir/image9.png)
-
 ## Overview
 Non-Relinquo Consulting (NRC) provides an end-to-end virtual fencing system. The solution includes a smart collar and a management application.
 
