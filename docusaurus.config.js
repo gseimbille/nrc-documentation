@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'NRC Documentation',
   tagline: 'Learn how to use NRC products and services',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.jpeg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -47,10 +47,6 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: false,
         theme: {
@@ -72,19 +68,19 @@ const config = {
         title: 'Documentation',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo.jpeg',
         },
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'User Manual',
           },
           {type: 'localeDropdown', position: 'right'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            href: 'https://app.datacake.de/',
+            label: 'Sign in',
             position: 'right',
           },
         ],
@@ -96,8 +92,12 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'User Manual',
                 to: '/docs/intro',
+              },
+              {
+                label: 'Datacake Platform',
+                href: 'https://app.datacake.de/',
               },
             ],
           },
@@ -105,16 +105,12 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Facebook',
+                href: 'https://www.facebook.com/people/NRC-IoT-Tracking-Solutions/61582610790496/',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/company/nrc-iot-tracking-solutions/',
               },
             ],
           },
@@ -123,12 +119,12 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/gseimbille/nrc-documentation/',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Non-Relinquo Consulting (NRC IoT Tracking Solutions). All rights reserved.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Non-Relinquo Consulting (NRC IoT Tracking Solutions).`,
       },
       prism: {
         theme: prismThemes.github,
