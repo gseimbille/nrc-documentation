@@ -96,8 +96,8 @@ const config = {
                 to: '/docs/intro',
               },
               {
-                label: 'Datacake Platform',
-                href: 'https://app.datacake.de/',
+                label: 'Homepage',
+                href: 'https://nrc.solutions/',
               },
             ],
           },
@@ -105,12 +105,12 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Facebook',
-                href: 'https://www.facebook.com/people/NRC-IoT-Tracking-Solutions/61582610790496/',
-              },
-              {
                 label: 'LinkedIn',
                 href: 'https://www.linkedin.com/company/nrc-iot-tracking-solutions/',
+              },
+              {
+                label: 'Facebook',
+                href: 'https://www.facebook.com/people/NRC-IoT-Tracking-Solutions/61582610790496/',
               },
             ],
           },
@@ -118,8 +118,8 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/gseimbille/nrc-documentation/',
+                label: 'Datacake Platform',
+                href: 'https://app.datacake.de/',
               },
             ],
           },
