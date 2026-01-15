@@ -1,0 +1,22 @@
+{
+  "sidebar.tutorialSidebar.category.Intro": {
+    "message": "Introduction",
+    "description": "Sidebar category label"
+  },
+  "sidebar.tutorialSidebar.category.Datacake Platform": {
+    "message": "Plateforme Datacake",
+    "description": "Sidebar category label"
+  },
+  "sidebar.tutorialSidebar.category.User Management": {
+    "message": "Gestion des utilisateurs",
+    "description": "Sidebar category label"
+  },
+  "sidebar.tutorialSidebar.category.Perimeter Management": {
+    "message": "Gestion des perimetres",
+    "description": "Sidebar category label"
+  },
+  "sidebar.tutorialSidebar.category.Device Management": {
+    "message": "Gestion des appareils",
+    "description": "Sidebar category label"
+  }
+}

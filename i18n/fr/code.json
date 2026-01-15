@@ -1,0 +1,26 @@
+{
+  "homepage.features.setupCollars.title": {
+    "message": "Installer vos colliers IoT",
+    "description": "Homepage feature title"
+  },
+  "homepage.features.setupCollars.desc": {
+    "message": "Allumer les colliers, valider le GPS, et verifier l'etat avant le deploiement.",
+    "description": "Homepage feature description"
+  },
+  "homepage.features.managePerimeters.title": {
+    "message": "Gerer les perimetres",
+    "description": "Homepage feature title"
+  },
+  "homepage.features.managePerimeters.desc": {
+    "message": "Creer, modifier et activer des perimetres quadrilateres avec GeoJSON.",
+    "description": "Homepage feature description"
+  },
+  "homepage.features.usersNotifications.title": {
+    "message": "Configurer utilisateurs et notifications",
+    "description": "Homepage feature title"
+  },
+  "homepage.features.usersNotifications.desc": {
+    "message": "Inviter des utilisateurs, reinitialiser les mots de passe et configurer les alertes.",
+    "description": "Homepage feature description"
+  }
+}
