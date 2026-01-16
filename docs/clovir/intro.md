@@ -1,6 +1,7 @@
 ---
 title: CLOVIR User Manual
 sidebar_position: 1
+slug: /
 ---
 
 ## Overview
@@ -14,7 +15,3 @@ NRC uses a web platform called Datacake to collect data from IoT devices, manage
 The Internet of Things (IoT) describes a network of physical objects that are equipped with sensors, software, and other technologies to connect and exchange data with other devices and systems over the Internet.
 
 An IoT system generally consists of three main elements: sensors, communication devices, and data processing/visualization platforms.
-
-## Document info
-- Version: 0.3 (10.07.2025)
-- Authors: Gildas Seimbille, Marcel Barat, Raphael Valceschnini

@@ -46,6 +46,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.js',
         },
         blog: false,
@@ -71,12 +72,6 @@ const config = {
           src: 'img/logo.jpeg',
         },
         items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'User Manual',
-          },
           {type: 'localeDropdown', position: 'right'},
           {
             href: 'https://app.datacake.de/',
