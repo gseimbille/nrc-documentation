@@ -7,7 +7,7 @@ slug: /
 ## Vue d'ensemble
 Non-Relinquo Consulting (NRC) propose une solution de clôtures virtuelles de bout en bout. Cette solution comprend un collier intelligent et une application de gestion.
 
-Ce manuel décrit la version 1 de la solution CLOVIR développée par NRC.
+Ce manuel décrit la version 1 de la solution CLOVIR développée par NRC. Le nom **CLOVIR** signifie **CLO**ture **VIR**tuelle.
 
 NRC utilise une plateforme web appelée Datacake pour collecter des données à partir de dispositifs IoT, gérer les comptes utilisateurs et accéder aux tableaux de bord. Vous pouvez accéder à Datacake via `https://app.datacake.de`.
 

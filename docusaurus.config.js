@@ -12,7 +12,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'NRC Documentation',
   tagline: 'Learn how to use NRC products and services',
-  favicon: 'img/favicon.ico',
+  // Same favicon as nrc.solutions
+  favicon: 'img/favicon.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -31,6 +32,13 @@ const config = {
   projectName: 'nrc-documentation', // Repo name.
 
   onBrokenLinks: 'throw',
+
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {rel: 'apple-touch-icon', href: '/img/apple-touch-icon.png'},
+    },
+  ],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -60,8 +68,8 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Social card shown when sharing links to the site
-      image: 'img/logo.jpeg',
+      // Same social card as nrc.solutions
+      image: 'img/og-image.jpg',
       colorMode: {
         respectPrefersColorScheme: true,
       },
@@ -69,7 +77,7 @@ const config = {
         title: 'Documentation',
         logo: {
           alt: 'NRC Logo',
-          src: 'img/logo.jpeg',
+          src: 'img/nrc-logo-small.png',
         },
         items: [
           {type: 'localeDropdown', position: 'right'},
