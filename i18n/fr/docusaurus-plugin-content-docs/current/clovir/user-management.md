@@ -4,7 +4,7 @@ sidebar_position: 2
 ---
 
 ## Création d'un compte utilisateur
-Si vous n'avez pas encore accès à Datacake, contactez votre administrateur de projet ou l'équipe NRC à l'adresse `marcel.nrc@pm.me`.
+Si vous n'avez pas encore accès à Datacake, contactez votre administrateur de projet ou l'équipe NRC à l'adresse `contact@nrc.solutions`.
 
 Vous recevrez ensuite un e-mail d'invitation pour rejoindre la plateforme et créer votre mot de passe.
 

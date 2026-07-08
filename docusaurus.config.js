@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'NRC Documentation',
   tagline: 'Learn how to use NRC products and services',
-  favicon: 'img/logo.jpeg',
+  favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -27,8 +27,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'gseimbille', // GitHub org/user name.
+  projectName: 'nrc-documentation', // Repo name.
 
   onBrokenLinks: 'throw',
 
@@ -60,15 +60,15 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      // Social card shown when sharing links to the site
+      image: 'img/logo.jpeg',
       colorMode: {
         respectPrefersColorScheme: true,
       },
       navbar: {
         title: 'Documentation',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'NRC Logo',
           src: 'img/logo.jpeg',
         },
         items: [

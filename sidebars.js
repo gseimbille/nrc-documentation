@@ -16,13 +16,7 @@
  */
 const sidebars = {
   tutorialSidebar: [
-    {
-      type: 'category',
-      label: 'Intro',
-      items: [
-        'clovir/intro',
-      ],
-    },
+    'clovir/intro',
     {
       type: 'category',
       label: 'Datacake Platform',

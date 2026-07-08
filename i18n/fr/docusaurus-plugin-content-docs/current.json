@@ -1,22 +1,22 @@
 {
-  "sidebar.tutorialSidebar.category.Intro": {
-    "message": "Introduction",
-    "description": "Sidebar category label"
-  },
   "sidebar.tutorialSidebar.category.Datacake Platform": {
     "message": "Plateforme Datacake",
-    "description": "Sidebar category label"
+    "description": "The label for category 'Datacake Platform' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.User Management": {
     "message": "Gestion des utilisateurs",
-    "description": "Sidebar category label"
+    "description": "The label for category 'User Management' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Perimeter Management": {
-    "message": "Gestion des perimetres",
-    "description": "Sidebar category label"
+    "message": "Gestion des périmètres",
+    "description": "The label for category 'Perimeter Management' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Device Management": {
     "message": "Gestion des appareils",
-    "description": "Sidebar category label"
+    "description": "The label for category 'Device Management' in sidebar 'tutorialSidebar'"
+  },
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
   }
 }

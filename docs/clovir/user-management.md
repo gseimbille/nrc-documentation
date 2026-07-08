@@ -4,7 +4,7 @@ sidebar_position: 2
 ---
 
 ## Create a user account
-If you do not have access to Datacake yet, contact your project administrator or the NRC team at `marcel.nrc@pm.me`.
+If you do not have access to Datacake yet, contact your project administrator or the NRC team at `contact@nrc.solutions`.
 
 You will receive an invitation email to join the platform and set your password.
 
