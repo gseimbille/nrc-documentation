@@ -31,7 +31,7 @@ exactement comme s'il n'existait pas.
 
 ## Usage côté serveur uniquement
 
-:::danger Ne placez jamais votre clé d'API dans un navigateur ou une application mobile
+:::danger[Ne placez jamais votre clé d'API dans un navigateur ou une application mobile]
 Votre clé donne un accès complet à votre flotte et permet de modifier ou de
 supprimer vos périmètres. Tout ce qui est distribué sur l'appareil d'un
 utilisateur — bundles JavaScript, binaires mobiles — peut être inspecté et la

@@ -120,7 +120,7 @@ DELETE /api/v1/perimeters/{id}
 
 Returns `204` with no body.
 
-:::warning Deleting a perimeter removes an active fence
+:::warning[Deleting a perimeter removes an active fence]
 Collars still tagged with its name lose that boundary. Move them to another
 perimeter first.
 :::
@@ -148,7 +148,7 @@ A valid ring, closed and in the right order:
 ]
 ```
 
-:::danger Longitude comes first
+:::danger[Longitude comes first]
 `[141.35, 43.06]` means longitude 141.35, latitude 43.06 — in Hokkaido.
 Reversing them describes a point in the Indian Ocean.
 

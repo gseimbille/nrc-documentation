@@ -72,7 +72,7 @@ curl -H "Authorization: Bearer VOTRE_CLE_API" \
 | `location` | objet ou null | Dernière position connue, ou `null` en l'absence de fix GPS. |
 | `measurements` | tableau | Dernière valeur de chaque champ transmis par le collier. |
 
-:::info `location` vaut null en l'absence de fix
+:::info[`location` vaut null en l'absence de fix]
 Un collier qui n'a pas encore acquis de position GPS renvoie `null`, et non
 `0,0`. Traitez `null` comme « position inconnue » et conservez l'affichage de la
 dernière position connue si vous en avez une : afficher un zéro placerait
@@ -192,7 +192,7 @@ Les lignes sont classées de la plus ancienne à la plus récente. Comme pour le
 mesures courantes, les champs `GEO` sont renvoyés sous forme d'objets
 `{lat, lng}`.
 
-:::tip Choisissez une résolution adaptée à votre besoin
+:::tip[Choisissez une résolution adaptée à votre besoin]
 Utilisez `raw` pour reconstituer le trajet précis d'un animal. Utilisez `1h` ou
 `1d` pour les tendances de batterie ou les longues périodes : la réponse est
 bien plus légère et plus simple à représenter graphiquement.

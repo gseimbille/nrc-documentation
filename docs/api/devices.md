@@ -71,7 +71,7 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
 | `location` | object or null | Latest position, or `null` if there is no GPS fix. |
 | `measurements` | array | Latest value of every field the collar reports. |
 
-:::info `location` is null when there is no fix
+:::info[`location` is null when there is no fix]
 A collar that has not yet acquired GPS reports `null`, not `0,0`. Treat `null`
 as "position unknown" and keep showing the last known position if you have one —
 plotting a zero would place the animal off the coast of Africa.
@@ -187,7 +187,7 @@ in consecutive windows.
 Rows are ordered oldest first. As with current measurements, `GEO` fields come
 back as `{lat, lng}` objects.
 
-:::tip Choose a resolution that matches the question
+:::tip[Choose a resolution that matches the question]
 Use `raw` to reconstruct an animal's exact track. Use `1h` or `1d` for battery
 trends or long periods — the response is far smaller and easier to chart.
 :::

@@ -31,7 +31,7 @@ it did not exist.
 
 ## Server-side only
 
-:::danger Never put your API key in a browser or mobile app
+:::danger[Never put your API key in a browser or mobile app]
 Your key grants full access to your fleet and lets the holder modify or delete
 your perimeters. Anything shipped to a user's device — JavaScript bundles,
 mobile binaries — can be inspected, and the key extracted.

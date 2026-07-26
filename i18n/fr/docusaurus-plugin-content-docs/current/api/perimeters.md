@@ -123,7 +123,7 @@ DELETE /api/v1/perimeters/{id}
 
 Renvoie `204` sans contenu.
 
-:::warning Supprimer un périmètre supprime une clôture active
+:::warning[Supprimer un périmètre supprime une clôture active]
 Les colliers portant encore son tag perdent cette limite. Affectez-les d'abord à
 un autre périmètre.
 :::
@@ -152,7 +152,7 @@ Un anneau valide, fermé et dans le bon ordre :
 ]
 ```
 
-:::danger La longitude vient en premier
+:::danger[La longitude vient en premier]
 `[141.35, 43.06]` signifie longitude 141.35, latitude 43.06 — à Hokkaidō.
 En inversant les deux valeurs, on décrit un point dans l'océan Indien.
 
