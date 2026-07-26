@@ -55,7 +55,7 @@ Sur l'ensemble des points de terminaison :
 - Les **horodatages** sont au format ISO-8601 en UTC, par exemple
   `2026-07-26T09:00:24Z`.
 - Les **coordonnées** renvoyées par l'API sont des objets :
-  `{ "lat": 43.06, "lng": 141.35 }`.
+  `{ "lat": 45.0, "lng": 10.0 }`.
 - Le **GeoJSON** que vous envoyez ou recevez utilise l'ordre standard
   `[longitude, latitude]`, soit l'inverse des objets `lat`/`lng` ci-dessus.
   C'est l'erreur la plus fréquente en début d'intégration.
@@ -81,7 +81,7 @@ curl -H "Authorization: Bearer VOTRE_CLE_API" \
       "online": true,
       "last_heard": "2026-07-26T09:00:25Z",
       "tags": ["Pâturage nord"],
-      "location": { "lat": 43.06004, "lng": 141.35213 },
+      "location": { "lat": 45.00312, "lng": 10.00457 },
       "measurements": [
         {
           "field": "BATTERY",

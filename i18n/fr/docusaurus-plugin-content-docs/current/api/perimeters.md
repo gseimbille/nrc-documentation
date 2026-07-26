@@ -76,11 +76,11 @@ curl -X POST https://api.nrc.solutions/api/v1/perimeters \
         "geometry": {
           "type": "Polygon",
           "coordinates": [[
-            [141.3500, 43.0600],
-            [141.3560, 43.0600],
-            [141.3560, 43.0650],
-            [141.3500, 43.0650],
-            [141.3500, 43.0600]
+            [10.0000, 45.0000],
+            [10.0060, 45.0000],
+            [10.0060, 45.0050],
+            [10.0000, 45.0050],
+            [10.0000, 45.0000]
           ]]
         }
       }]
@@ -144,24 +144,25 @@ Un anneau valide, fermé et dans le bon ordre :
 
 ```json
 [
-  [141.3500, 43.0600],
-  [141.3560, 43.0600],
-  [141.3560, 43.0650],
-  [141.3500, 43.0650],
-  [141.3500, 43.0600]
+  [10.0000, 45.0000],
+  [10.0060, 45.0000],
+  [10.0060, 45.0050],
+  [10.0000, 45.0050],
+  [10.0000, 45.0000]
 ]
 ```
 
 :::danger[La longitude vient en premier]
-`[141.35, 43.06]` signifie longitude 141.35, latitude 43.06 — à Hokkaidō.
-En inversant les deux valeurs, on décrit un point dans l'océan Indien.
+Dans `[10.0, 45.0]`, la longitude vaut `10.0` et la latitude `45.0`. Inverser une
+paire ne provoque généralement pas d'erreur : cela déplace silencieusement la
+clôture, souvent dans une tout autre région du monde.
 
-L'API rejette une paire inversée lorsque la latitude obtenue sort de l'intervalle
-±90, ce qui détecte l'erreur aux longitudes japonaises. Elle **ne peut pas** la
-détecter partout : aux longitudes européennes, les deux valeurs restent dans
-l'intervalle valide et le polygone est accepté tout en se situant dans le mauvais
-hémisphère. Vérifiez toujours un nouveau périmètre sur une carte avant d'y
-affecter des colliers.
+L'API ne peut rejeter une paire inversée que lorsque l'inversion produit une
+latitude impossible, c'est-à-dire lorsque la longitude dépasse ±90°. En deçà, les
+deux valeurs restent valides individuellement et le polygone est accepté bien
+qu'il soit au mauvais endroit. Près de la moitié des longitudes du globe se
+situent dans cet angle mort : **vérifiez donc toujours un nouveau périmètre sur
+une carte avant d'y affecter des colliers.**
 :::
 
 ### Nombre de côtés

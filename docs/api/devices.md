@@ -52,7 +52,7 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
     "online": true,
     "last_heard": "2026-07-26T09:00:25Z",
     "tags": ["North pasture"],
-    "location": { "lat": 43.06004, "lng": 141.35213 },
+    "location": { "lat": 45.00312, "lng": 10.00457 },
     "measurements": [ /* … */ ]
   }
 }
@@ -102,7 +102,7 @@ you only need current values and not the full device record.
       "label": "Location",
       "unit": null,
       "type": "GEO",
-      "value": { "lat": 43.06004, "lng": 141.35213 },
+      "value": { "lat": 45.00312, "lng": 10.00457 },
       "measured_at": "2026-07-26T09:00:24Z"
     }
   ],
@@ -111,7 +111,7 @@ you only need current values and not the full device record.
     "serial_number": "000123",
     "online": true,
     "last_heard": "2026-07-26T09:00:25Z",
-    "location": { "lat": 43.06004, "lng": 141.35213 }
+    "location": { "lat": 45.00312, "lng": 10.00457 }
   }
 }
 ```
@@ -169,7 +169,7 @@ in consecutive windows.
       "time": "2026-07-25T03:13:27Z",
       "values": {
         "BATTERY": 97.07,
-        "LOCATION": { "lat": 43.02790, "lng": 141.20084 }
+        "LOCATION": { "lat": 45.00108, "lng": 10.00219 }
       }
     }
   ],

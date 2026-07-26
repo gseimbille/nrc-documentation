@@ -53,7 +53,7 @@ curl -H "Authorization: Bearer VOTRE_CLE_API" \
     "online": true,
     "last_heard": "2026-07-26T09:00:25Z",
     "tags": ["Pâturage nord"],
-    "location": { "lat": 43.06004, "lng": 141.35213 },
+    "location": { "lat": 45.00312, "lng": 10.00457 },
     "measurements": [ /* … */ ]
   }
 }
@@ -104,7 +104,7 @@ Utile lorsque seules les valeurs courantes vous intéressent.
       "label": "Location",
       "unit": null,
       "type": "GEO",
-      "value": { "lat": 43.06004, "lng": 141.35213 },
+      "value": { "lat": 45.00312, "lng": 10.00457 },
       "measured_at": "2026-07-26T09:00:24Z"
     }
   ],
@@ -113,7 +113,7 @@ Utile lorsque seules les valeurs courantes vous intéressent.
     "serial_number": "000123",
     "online": true,
     "last_heard": "2026-07-26T09:00:25Z",
-    "location": { "lat": 43.06004, "lng": 141.35213 }
+    "location": { "lat": 45.00312, "lng": 10.00457 }
   }
 }
 ```
@@ -173,7 +173,7 @@ longues, procédez par fenêtres successives.
       "time": "2026-07-25T03:13:27Z",
       "values": {
         "BATTERY": 97.07,
-        "LOCATION": { "lat": 43.02790, "lng": 141.20084 }
+        "LOCATION": { "lat": 45.00108, "lng": 10.00219 }
       }
     }
   ],

@@ -73,11 +73,11 @@ curl -X POST https://api.nrc.solutions/api/v1/perimeters \
         "geometry": {
           "type": "Polygon",
           "coordinates": [[
-            [141.3500, 43.0600],
-            [141.3560, 43.0600],
-            [141.3560, 43.0650],
-            [141.3500, 43.0650],
-            [141.3500, 43.0600]
+            [10.0000, 45.0000],
+            [10.0060, 45.0000],
+            [10.0060, 45.0050],
+            [10.0000, 45.0050],
+            [10.0000, 45.0000]
           ]]
         }
       }]
@@ -140,23 +140,25 @@ A valid ring, closed and in the right order:
 
 ```json
 [
-  [141.3500, 43.0600],
-  [141.3560, 43.0600],
-  [141.3560, 43.0650],
-  [141.3500, 43.0650],
-  [141.3500, 43.0600]
+  [10.0000, 45.0000],
+  [10.0060, 45.0000],
+  [10.0060, 45.0050],
+  [10.0000, 45.0050],
+  [10.0000, 45.0000]
 ]
 ```
 
 :::danger[Longitude comes first]
-`[141.35, 43.06]` means longitude 141.35, latitude 43.06 — in Hokkaido.
-Reversing them describes a point in the Indian Ocean.
+In `[10.0, 45.0]` the longitude is `10.0` and the latitude is `45.0`. Reversing a
+pair does not usually produce an error — it silently relocates the fence, often
+to a completely different part of the world.
 
-The API rejects a reversed pair when the resulting latitude falls outside ±90,
-which catches the mistake at Japanese longitudes. It **cannot** catch it
-everywhere: at European longitudes both values stay in valid range, and the
-polygon is accepted while sitting in the wrong hemisphere. Always check a new
-perimeter on a map before assigning collars to it.
+The API can only reject a reversed pair when the swap produces an impossible
+latitude, which happens when the longitude is beyond ±90°. Below that, both
+numbers remain individually valid and the polygon is accepted even though it is
+in the wrong place. Roughly half the world's longitudes fall inside that blind
+spot, so **always confirm a new perimeter on a map before assigning collars to
+it.**
 :::
 
 ### Number of sides

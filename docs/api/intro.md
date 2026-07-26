@@ -49,7 +49,7 @@ Keep it secret — see [Authentication](./authentication.md).
 Across every endpoint:
 
 - **Timestamps** are ISO-8601 in UTC, for example `2026-07-26T09:00:24Z`.
-- **Coordinates** returned by the API are objects: `{ "lat": 43.06, "lng": 141.35 }`.
+- **Coordinates** returned by the API are objects: `{ "lat": 45.0, "lng": 10.0 }`.
 - **GeoJSON** you send or receive uses the standard `[longitude, latitude]`
   order, which is the opposite of the `lat`/`lng` objects above. This trips up
   most integrations at least once.
@@ -75,7 +75,7 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
       "online": true,
       "last_heard": "2026-07-26T09:00:25Z",
       "tags": ["North pasture"],
-      "location": { "lat": 43.06004, "lng": 141.35213 },
+      "location": { "lat": 45.00312, "lng": 10.00457 },
       "measurements": [
         {
           "field": "BATTERY",
