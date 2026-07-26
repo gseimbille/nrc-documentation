@@ -50,6 +50,17 @@ const sidebars = {
         'clovir/operational-process',
       ],
     },
+    {
+      type: 'category',
+      label: 'Partner API',
+      items: [
+        'api/intro',
+        'api/authentication',
+        'api/devices',
+        'api/perimeters',
+        'api/errors',
+      ],
+    },
   ],
 };
 

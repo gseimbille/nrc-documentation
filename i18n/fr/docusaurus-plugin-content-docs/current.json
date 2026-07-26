@@ -15,6 +15,10 @@
     "message": "Gestion des appareils",
     "description": "The label for category 'Device Management' in sidebar 'tutorialSidebar'"
   },
+  "sidebar.tutorialSidebar.category.Partner API": {
+    "message": "API Partenaires",
+    "description": "The label for category 'Partner API' in sidebar 'tutorialSidebar'"
+  },
   "version.label": {
     "message": "Next",
     "description": "The label for version current"

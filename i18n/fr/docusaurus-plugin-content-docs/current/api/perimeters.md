@@ -1,0 +1,197 @@
+---
+title: Périmètres
+sidebar_position: 4
+---
+
+Les périmètres sont les clôtures virtuelles à l'intérieur desquelles vos
+colliers sont maintenus. Contrairement aux appareils, ils peuvent être créés,
+modifiés et supprimés via l'API.
+
+## Lien entre périmètres et colliers
+
+Le **nom d'un périmètre est aussi son tag**. Un collier est maintenu par un
+périmètre lorsqu'il porte un tag correspondant exactement au nom de ce
+périmètre.
+
+```
+Périmètre « Pâturage nord »  ←→  collier taggé « Pâturage nord »
+```
+
+Les tags se gèrent depuis le tableau de bord Datacake — voir
+[Gestion des périmètres](../clovir/perimeters.md) dans le manuel utilisateur.
+Cette API crée et modifie la géométrie du périmètre ; elle n'y affecte pas les
+colliers.
+
+Renommer un périmètre rompt donc le lien avec les colliers portant encore
+l'ancien tag. Mettez également les tags à jour, faute de quoi les colliers
+retomberont sur leur clôture précédente.
+
+## Lister les périmètres
+
+```
+GET /api/v1/perimeters
+```
+
+```json
+{
+  "data": [
+    {
+      "id": 42,
+      "name": "Pâturage nord",
+      "description": "Pâture d'été, parcelle haute",
+      "nb_animal_expected": 25,
+      "geojson": { "type": "FeatureCollection", "features": [ /* … */ ] },
+      "created_at": "2026-07-26T09:20:11Z"
+    }
+  ],
+  "count": 1
+}
+```
+
+## Récupérer un périmètre
+
+```
+GET /api/v1/perimeters/{id}
+```
+
+## Créer un périmètre
+
+```
+POST /api/v1/perimeters
+```
+
+```bash
+curl -X POST https://api.nrc.solutions/api/v1/perimeters \
+  -H "Authorization: Bearer VOTRE_CLE_API" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Pâturage nord",
+    "description": "Pâture d été, parcelle haute",
+    "nb_animal_expected": 25,
+    "geojson": {
+      "type": "FeatureCollection",
+      "features": [{
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [141.3500, 43.0600],
+            [141.3560, 43.0600],
+            [141.3560, 43.0650],
+            [141.3500, 43.0650],
+            [141.3500, 43.0600]
+          ]]
+        }
+      }]
+    }
+  }'
+```
+
+Renvoie `201` avec le périmètre créé.
+
+### Champs du corps de requête
+
+| Champ | Obligatoire | Remarques |
+| --- | --- | --- |
+| `name` | oui | 200 caractères maximum. Doit être unique dans votre compte, et sert également de tag pour les colliers. |
+| `geojson` | oui | Un `FeatureCollection` GeoJSON contenant au moins un `Polygon`. |
+| `description` | non | Texte libre. |
+| `nb_animal_expected` | non | Entier, de 0 à 32767. |
+
+## Modifier un périmètre
+
+```
+PATCH /api/v1/perimeters/{id}
+```
+
+N'envoyez que les champs à modifier — tout champ omis reste inchangé, ce qui
+permet de renommer un périmètre sans retransmettre sa géométrie.
+
+```bash
+curl -X PATCH https://api.nrc.solutions/api/v1/perimeters/42 \
+  -H "Authorization: Bearer VOTRE_CLE_API" \
+  -H "Content-Type: application/json" \
+  -d '{"nb_animal_expected": 30}'
+```
+
+## Supprimer un périmètre
+
+```
+DELETE /api/v1/perimeters/{id}
+```
+
+Renvoie `204` sans contenu.
+
+:::warning Supprimer un périmètre supprime une clôture active
+Les colliers portant encore son tag perdent cette limite. Affectez-les d'abord à
+un autre périmètre.
+:::
+
+## Contraintes GeoJSON
+
+Le champ `geojson` est validé avant d'être accepté, car il est converti en la
+limite que vos colliers font effectivement respecter.
+
+- Doit être un `FeatureCollection` contenant au moins un objet `Polygon`.
+- Les positions sont au format `[longitude, latitude]` — **longitude d'abord**.
+- Les anneaux doivent être **fermés** : la dernière position doit être identique
+  à la première.
+- Latitude comprise entre −90 et 90, longitude entre −180 et 180.
+- 500 sommets au maximum par anneau.
+
+Un anneau valide, fermé et dans le bon ordre :
+
+```json
+[
+  [141.3500, 43.0600],
+  [141.3560, 43.0600],
+  [141.3560, 43.0650],
+  [141.3500, 43.0650],
+  [141.3500, 43.0600]
+]
+```
+
+:::danger La longitude vient en premier
+`[141.35, 43.06]` signifie longitude 141.35, latitude 43.06 — à Hokkaidō.
+En inversant les deux valeurs, on décrit un point dans l'océan Indien.
+
+L'API rejette une paire inversée lorsque la latitude obtenue sort de l'intervalle
+±90, ce qui détecte l'erreur aux longitudes japonaises. Elle **ne peut pas** la
+détecter partout : aux longitudes européennes, les deux valeurs restent dans
+l'intervalle valide et le polygone est accepté tout en se situant dans le mauvais
+hémisphère. Vérifiez toujours un nouveau périmètre sur une carte avant d'y
+affecter des colliers.
+:::
+
+### Nombre de côtés
+
+Les générations de colliers les plus anciennes ne prennent en charge que les
+périmètres à **quatre côtés**. Les générations récentes suivent l'intégralité du
+polygone. L'API accepte les formes complexes dans tous les cas : confirmez donc
+auprès de NRC ce qui s'applique à votre flotte avant d'en dessiner une — voir
+[Gestion des périmètres](../clovir/perimeters.md).
+
+### Dessiner un polygone
+
+Pour produire des coordonnées manuellement, [geojson.io](https://geojson.io) est
+la solution la plus simple : dessinez la forme et copiez le `FeatureCollection`
+obtenu. Le manuel utilisateur détaille cette étape dans
+[Interface GeoJSON.io](../clovir/geojson.md).
+
+## Noms en double
+
+Créer un périmètre avec un nom que vous utilisez déjà renvoie `409` :
+
+```json
+{
+  "error": {
+    "code": "perimeter_name_taken",
+    "message": "A perimeter named \"Pâturage nord\" already exists"
+  }
+}
+```
+
+Les noms doivent être uniques au sein de votre compte car ils servent de tags
+pour les colliers : deux périmètres de même nom rendraient l'affectation d'un
+collier ambiguë.
