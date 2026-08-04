@@ -3,8 +3,8 @@ title: Appareils
 sidebar_position: 3
 ---
 
-Les appareils sont vos colliers. Tous les points de terminaison associés sont en
-lecture seule.
+Les appareils sont vos colliers. La lecture est toujours disponible ; l'affectation
+à un périmètre nécessite une clé disposant de la portée `devices:write`.
 
 ## Lister les appareils
 
@@ -197,6 +197,103 @@ Utilisez `raw` pour reconstituer le trajet précis d'un animal. Utilisez `1h` ou
 `1d` pour les tendances de batterie ou les longues périodes : la réponse est
 bien plus légère et plus simple à représenter graphiquement.
 :::
+
+## Affecter un collier à un périmètre
+
+Un collier est maintenu par un périmètre lorsqu'il porte un **tag** Datacake
+correspondant exactement au nom de ce périmètre. Ces points de terminaison
+gèrent ce lien pour vous.
+
+### Dans quel périmètre se trouve un collier ?
+
+```
+GET /api/v1/devices/{serial}/perimeter
+```
+
+```json
+{
+  "data": {
+    "serial_number": "000123",
+    "perimeter": "Pâturage nord",
+    "tags": ["Cellular", "Pâturage nord"]
+  }
+}
+```
+
+`perimeter` vaut `null` lorsque le collier n'est affecté à aucune clôture.
+
+### Affecter
+
+```
+PUT /api/v1/devices/{serial}/perimeter
+```
+
+```bash
+curl -X PUT https://api.nrc.solutions/api/v1/devices/000123/perimeter \
+  -H "Authorization: Bearer VOTRE_CLE_API" \
+  -H "Content-Type: application/json" \
+  -d '{"perimeter": "Pâturage nord"}'
+```
+
+Vous pouvez désigner le périmètre par son nom ou par son identifiant —
+`{"perimeter_id": 42}` fonctionne également. Le périmètre doit exister dans
+votre compte, sinon la requête renvoie `404` plutôt que d'attacher
+silencieusement un tag sans signification.
+
+L'affectation est **exclusive et non destructive** :
+
+- Le périmètre auquel le collier était affecté est retiré : il n'appartient
+  jamais à deux clôtures à la fois.
+- Tous les autres tags — regroupement, matériel, nom de troupeau — sont
+  conservés intacts.
+- Réaffecter le même périmètre ne change rien.
+
+### Retirer l'affectation
+
+```
+DELETE /api/v1/devices/{serial}/perimeter
+```
+
+Retire le tag de périmètre du collier en laissant ses autres tags en place.
+
+:::warning[Un collier sans affectation n'a plus de clôture]
+Une fois le tag de périmètre retiré, le collier n'est plus maintenu par aucune
+limite dès sa prochaine transmission. Affectez-le à un autre périmètre plutôt
+que de le laisser sans affectation sur le terrain.
+:::
+
+### Prise en compte à la prochaine transmission
+
+Le collier reçoit sa nouvelle clôture lors de sa prochaine remontée de données —
+en général sous 30 minutes environ, et non immédiatement. `GET .../perimeter`
+reflète le changement tout de suite, car il lit l'affectation et non ce que le
+collier a effectivement reçu.
+
+## Gérer les tags directement
+
+```
+GET /api/v1/devices/{serial}/tags
+PUT /api/v1/devices/{serial}/tags
+```
+
+À utiliser pour les tags qui ne sont pas des périmètres : regroupement,
+matériel, nom de troupeau. `PUT` remplace l'intégralité de la liste :
+
+```bash
+curl -X PUT https://api.nrc.solutions/api/v1/devices/000123/tags \
+  -H "Authorization: Bearer VOTRE_CLE_API" \
+  -H "Content-Type: application/json" \
+  -d '{"tags": ["Cellular", "Troupeau A", "Pâturage nord"]}'
+```
+
+Une liste de tags nommant **deux périmètres ou plus est rejetée** avec un `400`,
+car la clôture réellement appliquée dépendrait alors de l'ordre des tags et non
+de votre intention. Privilégiez `PUT .../perimeter` pour déplacer un collier
+d'une clôture à une autre.
+
+Les tags sont comparés aux noms de périmètres par égalité stricte de chaînes :
+« Pâturage nord » suivi d'un espace ne correspondra pas, pas plus qu'une
+différence de casse.
 
 ### Ne demandez que le nécessaire
 

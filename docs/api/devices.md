@@ -3,7 +3,8 @@ title: Devices
 sidebar_position: 3
 ---
 
-Devices are your collars. All device endpoints are read-only.
+Devices are your collars. Reading them is always available; assigning them
+to a perimeter requires a key with the `devices:write` scope.
 
 ## List devices
 
@@ -191,6 +192,99 @@ back as `{lat, lng}` objects.
 Use `raw` to reconstruct an animal's exact track. Use `1h` or `1d` for battery
 trends or long periods — the response is far smaller and easier to chart.
 :::
+
+## Assign a collar to a perimeter
+
+A collar is enclosed by a perimeter when it carries a Datacake **tag** exactly
+matching that perimeter's name. These endpoints manage that link for you.
+
+### Which perimeter is a collar in?
+
+```
+GET /api/v1/devices/{serial}/perimeter
+```
+
+```json
+{
+  "data": {
+    "serial_number": "000123",
+    "perimeter": "North pasture",
+    "tags": ["Cellular", "North pasture"]
+  }
+}
+```
+
+`perimeter` is `null` when the collar is not assigned to any fence.
+
+### Assign
+
+```
+PUT /api/v1/devices/{serial}/perimeter
+```
+
+```bash
+curl -X PUT https://api.nrc.solutions/api/v1/devices/000123/perimeter \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"perimeter": "North pasture"}'
+```
+
+You may identify the perimeter by name or by id — `{"perimeter_id": 42}` works
+just as well. The perimeter must exist in your account, otherwise the request
+returns `404` rather than silently attaching a meaningless tag.
+
+Assignment is **exclusive and non-destructive**:
+
+- Any perimeter the collar was previously assigned to is removed, so it is never
+  left belonging to two fences at once.
+- All other tags — grouping, hardware, herd names — are preserved untouched.
+- Re-assigning the same perimeter changes nothing.
+
+### Unassign
+
+```
+DELETE /api/v1/devices/{serial}/perimeter
+```
+
+Removes the collar's perimeter tag while leaving its other tags in place.
+
+:::warning[An unassigned collar has no fence]
+Once the perimeter tag is removed, the collar stops being held by any boundary
+at the next check-in. Assign it to another perimeter rather than leaving it
+unassigned in the field.
+:::
+
+### Changes take effect at the next check-in
+
+The collar receives its new fence the next time it reports in — typically
+within about 30 minutes, not instantly. `GET .../perimeter` reflects the change
+immediately, because it reads the assignment, not what the collar has actually
+received.
+
+## Managing tags directly
+
+```
+GET /api/v1/devices/{serial}/tags
+PUT /api/v1/devices/{serial}/tags
+```
+
+Use these for tags that are not perimeters — grouping, hardware, a herd name.
+`PUT` replaces the whole list:
+
+```bash
+curl -X PUT https://api.nrc.solutions/api/v1/devices/000123/tags \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"tags": ["Cellular", "Herd A", "North pasture"]}'
+```
+
+A tag list naming **two or more perimeters is rejected** with `400`, because the
+collar's actual fence would then depend on tag order rather than on your intent.
+Prefer `PUT .../perimeter` to move a collar between fences.
+
+Tags are matched to perimeter names by exact string comparison — `"North
+pasture "` with a trailing space will not match, and neither will a difference
+in capitalisation.
 
 ### Requesting only what you need
 
