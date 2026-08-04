@@ -262,6 +262,14 @@ limite dès sa prochaine transmission. Affectez-le à un autre périmètre plut�
 que de le laisser sans affectation sur le terrain.
 :::
 
+:::info[Colliers partagés avec un autre espace de travail]
+Un collier peut être partagé entre plusieurs espaces de travail. Ses tags
+appartenant au collier lui-même et non à un espace de travail, un collier déjà
+affecté à un périmètre ailleurs ne peut pas être réaffecté ici : la requête
+renvoie `409`, et `GET .../perimeter` signale le tag sous
+`assigned_in_another_workspace`. Contactez NRC pour qu'il vous soit transféré.
+:::
+
 ### Prise en compte à la prochaine transmission
 
 Le collier reçoit sa nouvelle clôture lors de sa prochaine remontée de données —

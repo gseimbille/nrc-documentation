@@ -254,6 +254,14 @@ at the next check-in. Assign it to another perimeter rather than leaving it
 unassigned in the field.
 :::
 
+:::info[Collars shared with another workspace]
+A collar can be shared between workspaces. Because its tags belong to the collar
+itself rather than to one workspace, a collar already assigned to a perimeter
+elsewhere cannot be reassigned here — the request returns `409`, and
+`GET .../perimeter` reports the tag under `assigned_in_another_workspace`.
+Contact NRC to have the collar released to you.
+:::
+
 ### Changes take effect at the next check-in
 
 The collar receives its new fence the next time it reports in — typically
