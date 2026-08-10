@@ -95,7 +95,7 @@ Renvoie `201` avec le périmètre créé.
 | Champ | Obligatoire | Remarques |
 | --- | --- | --- |
 | `name` | oui | 200 caractères maximum. Doit être unique dans votre compte, et sert également de tag pour les colliers. |
-| `geojson` | oui | Un `FeatureCollection` GeoJSON contenant exactement un `Polygon`, de 3 à 20 sommets. |
+| `geojson` | oui | Un `FeatureCollection` GeoJSON contenant exactement un `Polygon`, de 3 à 19 sommets. |
 | `description` | non | Texte libre. |
 | `nb_animal_expected` | non | Entier, de 0 à 32767. |
 
@@ -135,14 +135,15 @@ limite que vos colliers font effectivement respecter.
 
 - Exactement **un** objet `Polygon` — un collier ne retient qu'une seule zone.
 - Un **seul anneau** : les trous ne sont pas pris en charge.
-- Entre **3 et 20 sommets**.
+- Entre **3 et 19 sommets**.
 - Les positions sont au format `[longitude, latitude]` — **longitude d'abord**.
 - Les anneaux doivent être **fermés** : la dernière position doit être identique
   à la première.
 - Latitude comprise entre −90 et 90, longitude entre −180 et 180.
 
 :::warning[Ces limites viennent du collier, pas de l'API]
-Un collier ne mémorise qu'une seule zone de **20 sommets maximum**. Le format
+Un collier mémorise une zone de 20 points de délimitation, dont l'un sert à
+fermer le contour : le maximum utilisable est donc de **19 sommets**. Le format
 GeoJSON permet de décrire plusieurs polygones, des trous ou un contour de cent
 sommets, mais un collier ne peut rien faire respecter de tout cela : l'API les
 refuse plutôt que d'accepter une clôture qui ne fonctionnerait jamais sur le
@@ -179,7 +180,7 @@ une carte avant d'y affecter des colliers.**
 
 ### Nombre de côtés
 
-L'API accepte de 3 à 20 sommets, mais **les générations de colliers les plus
+L'API accepte de 3 à 19 sommets, mais **les générations de colliers les plus
 anciennes ne gèrent que les périmètres à quatre côtés** et ignorent le reste du
 contour. Confirmez auprès de NRC la génération de votre flotte avant de dessiner
 une forme complexe — voir [Gestion des périmètres](../clovir/perimeters.md).

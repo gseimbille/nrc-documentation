@@ -92,7 +92,7 @@ Returns `201` with the created perimeter.
 | Field | Required | Notes |
 | --- | --- | --- |
 | `name` | yes | Up to 200 characters. Must be unique within your account, and doubles as the collar tag. |
-| `geojson` | yes | A GeoJSON `FeatureCollection` holding exactly one `Polygon`, 3–20 corners. |
+| `geojson` | yes | A GeoJSON `FeatureCollection` holding exactly one `Polygon`, 3–19 corners. |
 | `description` | no | Free text. |
 | `nb_animal_expected` | no | Integer, 0–32767. |
 
@@ -132,16 +132,17 @@ into the boundary your collars actually enforce.
 
 - Exactly **one** `Polygon` feature — a collar holds one zone.
 - A **single ring**: holes are not supported.
-- Between **3 and 20 corners**.
+- Between **3 and 19 corners**.
 - Positions are `[longitude, latitude]` — **longitude first**.
 - Rings must be **closed**: the last position must be identical to the first.
 - Latitude between −90 and 90, longitude between −180 and 180.
 
 :::warning[These limits come from the collar, not the API]
-A collar stores exactly one zone of at most **20 corners**. GeoJSON itself
-happily describes several polygons, holes, or a hundred-corner outline — but a
-collar cannot enforce any of that, so the API rejects it rather than accepting a
-fence that would never work in the field.
+A collar stores one zone of 20 boundary points, and closing the outline uses
+one of them — so **19 corners** is the usable maximum. GeoJSON itself happily
+describes several polygons, holes, or a hundred-corner outline, but a collar
+cannot enforce any of that, so the API rejects it rather than accepting a fence
+that would never work in the field.
 
 If you need to enclose two separate areas, create two perimeters and assign each
 collar to the one it belongs in.
@@ -174,7 +175,7 @@ it.**
 
 ### Number of sides
 
-The API accepts 3 to 20 corners, but **older collar generations support
+The API accepts 3 to 19 corners, but **older collar generations support
 four-sided perimeters only** and ignore the rest of the outline. Confirm with NRC
 which generation your fleet is before drawing a complex shape — see
 [Perimeter management](../clovir/perimeters.md).
