@@ -95,7 +95,7 @@ Renvoie `201` avec le périmètre créé.
 | Champ | Obligatoire | Remarques |
 | --- | --- | --- |
 | `name` | oui | 200 caractères maximum. Doit être unique dans votre compte, et sert également de tag pour les colliers. |
-| `geojson` | oui | Un `FeatureCollection` GeoJSON contenant au moins un `Polygon`. |
+| `geojson` | oui | Un `FeatureCollection` GeoJSON contenant exactement un `Polygon`, de 3 à 20 sommets. |
 | `description` | non | Texte libre. |
 | `nb_animal_expected` | non | Entier, de 0 à 32767. |
 
@@ -133,12 +133,24 @@ un autre périmètre.
 Le champ `geojson` est validé avant d'être accepté, car il est converti en la
 limite que vos colliers font effectivement respecter.
 
-- Doit être un `FeatureCollection` contenant au moins un objet `Polygon`.
+- Exactement **un** objet `Polygon` — un collier ne retient qu'une seule zone.
+- Un **seul anneau** : les trous ne sont pas pris en charge.
+- Entre **3 et 20 sommets**.
 - Les positions sont au format `[longitude, latitude]` — **longitude d'abord**.
 - Les anneaux doivent être **fermés** : la dernière position doit être identique
   à la première.
 - Latitude comprise entre −90 et 90, longitude entre −180 et 180.
-- 500 sommets au maximum par anneau.
+
+:::warning[Ces limites viennent du collier, pas de l'API]
+Un collier ne mémorise qu'une seule zone de **20 sommets maximum**. Le format
+GeoJSON permet de décrire plusieurs polygones, des trous ou un contour de cent
+sommets, mais un collier ne peut rien faire respecter de tout cela : l'API les
+refuse plutôt que d'accepter une clôture qui ne fonctionnerait jamais sur le
+terrain.
+
+Pour délimiter deux zones distinctes, créez deux périmètres et affectez chaque
+collier à celui qui le concerne.
+:::
 
 Un anneau valide, fermé et dans le bon ordre :
 
@@ -167,11 +179,10 @@ une carte avant d'y affecter des colliers.**
 
 ### Nombre de côtés
 
-Les générations de colliers les plus anciennes ne prennent en charge que les
-périmètres à **quatre côtés**. Les générations récentes suivent l'intégralité du
-polygone. L'API accepte les formes complexes dans tous les cas : confirmez donc
-auprès de NRC ce qui s'applique à votre flotte avant d'en dessiner une — voir
-[Gestion des périmètres](../clovir/perimeters.md).
+L'API accepte de 3 à 20 sommets, mais **les générations de colliers les plus
+anciennes ne gèrent que les périmètres à quatre côtés** et ignorent le reste du
+contour. Confirmez auprès de NRC la génération de votre flotte avant de dessiner
+une forme complexe — voir [Gestion des périmètres](../clovir/perimeters.md).
 
 ### Dessiner un polygone
 
