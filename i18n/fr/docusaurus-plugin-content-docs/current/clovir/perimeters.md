@@ -34,8 +34,15 @@ Cliquez sur **New Perimeter**. Le panneau se déroule en trois étapes.
 ### 1. Importer des parcelles (optionnel)
 
 Déposez un fichier PAC `.xml` pour charger vos parcelles déclarées plutôt que de
-les dessiner à la main. Passez cette étape si vous préférez tracer le contour
-vous-même.
+les dessiner à la main.
+
+**PAC** désigne la *Politique Agricole Commune* de l'Union européenne. Les
+exploitants de l'UE y déclarent leurs parcelles chaque année et peuvent exporter
+le résultat sous forme de fichier XML, qui contient déjà le contour exact de
+chaque parcelle. L'importer évite de redessiner des terres déjà cartographiées.
+
+Si vous exploitez hors de l'Union européenne, ou si vous ne disposez pas d'un tel
+fichier, passez cette étape et tracez le contour vous-même.
 
 ### 2. Dessiner le périmètre
 

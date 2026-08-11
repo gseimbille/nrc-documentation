@@ -189,8 +189,7 @@ une forme complexe — voir [Gestion des périmètres](../clovir/perimeters.md).
 
 Pour produire des coordonnées manuellement, [geojson.io](https://geojson.io) est
 la solution la plus simple : dessinez la forme et copiez le `FeatureCollection`
-obtenu. Le manuel utilisateur détaille cette étape dans
-[Interface GeoJSON.io](../clovir/geojson.md).
+obtenu.
 
 ## Noms en double
 

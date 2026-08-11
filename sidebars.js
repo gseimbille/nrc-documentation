@@ -35,7 +35,6 @@ const sidebars = {
       label: 'Perimeter Management',
       items: [
         'clovir/perimeters',
-        'clovir/geojson',
       ],
     },
     {

@@ -183,8 +183,7 @@ which generation your fleet is before drawing a complex shape — see
 ### Drawing a polygon
 
 To produce coordinates by hand, [geojson.io](https://geojson.io) is the simplest
-option: draw the shape and copy the resulting `FeatureCollection`. The user
-manual covers this in [GeoJSON.io interface](../clovir/geojson.md).
+option: draw the shape and copy the resulting `FeatureCollection`.
 
 ## Duplicate names
 

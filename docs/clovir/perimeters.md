@@ -30,7 +30,16 @@ Click **New Perimeter**. The panel walks through three steps.
 ### 1. Import fields (optional)
 
 Drop a PAC `.xml` file to load your declared parcels instead of drawing them by
-hand. Skip this step if you would rather draw the outline yourself.
+hand.
+
+**PAC** stands for *Politique Agricole Commune* — the European Union's Common
+Agricultural Policy. Farmers in the EU declare their parcels each year under that
+scheme and can export the result as an XML file, which already contains the exact
+boundaries of every field. Importing it saves redrawing land you have already
+mapped.
+
+If you farm outside the EU, or simply do not have such a file, skip this step and
+draw the outline yourself.
 
 ### 2. Draw perimeter
 
