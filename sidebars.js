@@ -45,7 +45,6 @@ const sidebars = {
         'clovir/collar-dashboard',
         'clovir/share-dashboard',
         'clovir/mobile-app',
-        'clovir/collar-hardware',
         'clovir/activation',
         'clovir/operational-process',
       ],
