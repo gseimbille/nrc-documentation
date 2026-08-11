@@ -4,7 +4,8 @@ sidebar_position: 3
 ---
 
 ## Liste des périmètres
-Dans le menu de gauche de Datacake, sélectionnez **Perimeter** (ou **MSA FR**) pour afficher la liste des périmètres.
+Dans le menu de gauche de Datacake, sélectionnez **Perimeter** pour afficher la liste
+des périmètres. Cette entrée peut porter un autre nom dans votre espace de travail.
 
 ![Liste des périmètres dans Datacake](/img/clovir/image4.png)
 

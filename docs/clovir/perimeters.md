@@ -4,7 +4,8 @@ sidebar_position: 3
 ---
 
 ## Perimeter list
-In the left Datacake menu, select **Perimeter** (or **MSA FR**) to view the list of perimeters.
+In the left Datacake menu, select **Perimeter** to view the list of perimeters. This
+entry may be named differently in your own workspace.
 
 ![Perimeter list in Datacake](/img/clovir/image4.png)
 

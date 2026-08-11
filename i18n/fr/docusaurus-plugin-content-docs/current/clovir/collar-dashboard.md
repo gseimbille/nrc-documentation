@@ -15,5 +15,3 @@ Un collier est **in geofence** lorsqu'il se trouve dans le périmètre autorisé
 - Le nombre de messages de géolocalisation reçus par l'application
 - La température extérieure exprimée en degrés Celsius
 - La tension de batterie en Volts : 4,2 V (batterie chargée), 3,2 V (batterie à recharger)
-
-![Vue du tableau de bord](/img/clovir/image6.png)

@@ -15,5 +15,3 @@ On the right, you can read the following indicators (in order):
 - Number of geolocation messages received by the application
 - External temperature in degrees Celsius
 - Battery voltage in Volts: 4.2 V is fully charged, 3.2 V indicates the battery should be recharged
-
-![Collar dashboard view](/img/clovir/image6.png)
