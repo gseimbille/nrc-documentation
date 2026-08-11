@@ -17,14 +17,7 @@
 const sidebars = {
   tutorialSidebar: [
     'clovir/intro',
-    {
-      type: 'category',
-      label: 'Datacake Platform',
-      items: [
-        'clovir/features',
-        'clovir/crossing-logic',
-      ],
-    },
+    'clovir/datacake',
     {
       type: 'category',
       label: 'User Management',

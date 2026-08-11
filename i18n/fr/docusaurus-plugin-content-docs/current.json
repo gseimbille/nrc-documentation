@@ -1,8 +1,4 @@
 {
-  "sidebar.tutorialSidebar.category.Datacake Platform": {
-    "message": "Plateforme Datacake",
-    "description": "The label for category 'Datacake Platform' in sidebar 'tutorialSidebar'"
-  },
   "sidebar.tutorialSidebar.category.User Management": {
     "message": "Gestion des utilisateurs",
     "description": "The label for category 'User Management' in sidebar 'tutorialSidebar'"
