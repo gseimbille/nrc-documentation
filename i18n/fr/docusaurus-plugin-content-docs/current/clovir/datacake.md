@@ -32,10 +32,14 @@ suit s'y déroule.
 La position est déterminée par GNSS (couramment appelé GPS). La logique peut être
 modifiée à distance, collier par collier.
 
+![Le périmètre autorisé, sa zone tampon de 2 mètres et l'extérieur](/img/clovir/buffer-zone.svg)
+
 ### L'animal entre dans la zone tampon
 
 Un son d'avertissement continu se déclenche immédiatement — fort (100 dB à 30 cm)
 et aigu (2731 Hz).
+
+![Son à 0 s, première stimulation à 3 s, seconde à 7 s, aucune ensuite](/img/clovir/crossing-timeline.svg)
 
 | Temps dans la zone tampon | Ce qui se passe |
 | --- | --- |

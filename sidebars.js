@@ -34,6 +34,7 @@ const sidebars = {
       type: 'category',
       label: 'Device Management',
       items: [
+        'clovir/collar',
         'clovir/map',
         'clovir/collar-dashboard',
         'clovir/share-dashboard',

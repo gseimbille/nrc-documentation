@@ -31,10 +31,14 @@ animal reaches it before the boundary itself, and everything below happens there
 Position is determined by GNSS (commonly called GPS). The logic can be updated
 remotely, per collar.
 
+![The authorised perimeter, its 2 metre buffer zone, and the exterior](/img/clovir/buffer-zone.svg)
+
 ### The animal enters the buffer zone
 
 A continuous warning sound starts immediately — loud (100 dB at 30 cm) and
 high-pitched (2731 Hz).
+
+![Sound starts at 0 s, first stimulation at 3 s, second at 7 s, none after](/img/clovir/crossing-timeline.svg)
 
 | Time in the buffer zone | What happens |
 | --- | --- |

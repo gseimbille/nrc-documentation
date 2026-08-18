@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" width="520" height="300" role="img" aria-label="Diagram of the authorised perimeter, the 2 metre buffer zone inside its boundary, and the exterior">
+  <style>
+    .lbl  { font: 600 13px system-ui, sans-serif; fill: #1f2937; }
+    .note { font: 400 11px system-ui, sans-serif; fill: #4b5563; }
+    .dim  { font: 600 12px system-ui, sans-serif; fill: #b45309; }
+.note { fill: #9ca3af; } .dim { fill: #fbbf24; }
+    }
+  </style>
+  <rect x="0" y="0" width="520" height="300" fill="#ffffff" rx="6"/>
+  <!-- exterior -->
+  <rect x="0" y="0" width="520" height="300" fill="#f3f4f6" fill-opacity="0.35"/>
+  <!-- authorised perimeter (green) -->
+  <rect x="60" y="45" width="400" height="210" rx="6" fill="#22c55e" fill-opacity="0.18" stroke="#dc2626" stroke-width="2.5"/>
+  <!-- buffer zone band -->
+  <rect x="60" y="45" width="400" height="210" rx="6" fill="none" stroke="#f59e0b" stroke-width="26" stroke-opacity="0.30"/>
+  <rect x="86" y="71" width="348" height="158" rx="4" fill="none" stroke="#f59e0b" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <!-- 2 m dimension -->
+  <line x1="60" y1="150" x2="86" y2="150" stroke="#b45309" stroke-width="1.4"/>
+  <line x1="60" y1="144" x2="60" y2="156" stroke="#b45309" stroke-width="1.4"/>
+  <line x1="86" y1="144" x2="86" y2="156" stroke="#b45309" stroke-width="1.4"/>
+  <text class="dim" x="94" y="147">2.0 m</text>
+  <text class="note" x="94" y="161">buffer zone</text>
+  <!-- labels -->
+  <text class="lbl" x="200" y="150">Authorised perimeter</text>
+  <text class="note" x="200" y="166">the animal may graze freely here</text>
+  <text class="lbl" x="12" y="28">Exterior</text>
+  <text class="note" x="12" y="290">Red line = perimeter boundary</text>
+</svg>
