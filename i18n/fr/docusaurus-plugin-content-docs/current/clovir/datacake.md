@@ -25,21 +25,50 @@ gérer votre équipe et vos colliers, et les fonctionnalités CLOVIR y apparaiss
 
 ## Logique de franchissement
 
-La logique détermine quand un son d'avertissement est déclenché et quand un
-stimulus électrique lui succède. Elle peut être modifiée à distance, collier par
-collier, selon les besoins de l'éleveur.
+La **zone tampon** est la bande de 2 mètres située juste à l'intérieur de la
+limite du périmètre. L'animal l'atteint avant la limite elle-même, et tout ce qui
+suit s'y déroule.
 
-| Événement | Comportement |
+La position est déterminée par GNSS (couramment appelé GPS). La logique peut être
+modifiée à distance, collier par collier.
+
+### L'animal entre dans la zone tampon
+
+Un son d'avertissement continu se déclenche immédiatement — fort (100 dB à 30 cm)
+et aigu (2731 Hz).
+
+| Temps dans la zone tampon | Ce qui se passe |
 | --- | --- |
-| Retour dans la zone | Aucun son |
-| Arrivée dans la zone tampon en sortie | Un son d'avertissement fort et continu se déclenche |
-| Durée du son | 5 secondes, en un seul son |
-| Stimulus électrique | Si l'animal n'a pas reculé dans ces 5 secondes, un stimulus est administré |
+| 0 s | Le son démarre |
+| 3 s | Première stimulation électrique, si l'animal est toujours présent |
+| 7 s | Deuxième stimulation électrique, si l'animal est toujours présent |
+| au-delà | **Plus aucune stimulation**, mais le son continue tant que l'animal reste |
 
-**Zone tampon** — bande de 2 mètres située avant la limite du périmètre, franchie
-avant la limite elle-même.
+Un animal qui entre et ressort aussitôt, en moins de 3 secondes, n'entend que le
+son et ne reçoit aucune stimulation.
 
-**Stimulus électrique** — 0,5 J à 2 kV, instantané.
+### L'animal revient à l'intérieur du périmètre
+
+Le son s'arrête dès qu'il quitte la zone tampon, et aucune stimulation n'est
+administrée. **La logique est réinitialisée** : deux stimulations redeviennent
+possibles si l'animal revient dans la zone tampon.
+
+### L'animal sort complètement du périmètre
+
+Même séquence que ci-dessus, mais le son s'arrête après la deuxième stimulation
+et un **message est envoyé à l'éleveur**. Si les deux stimulations ont déjà été
+administrées dans la zone tampon, aucune autre n'est délivrée.
+
+### L'animal revient dans le périmètre
+
+Un **message est envoyé à l'éleveur** et la logique est réinitialisée : le son et
+les deux stimulations redeviennent possibles.
+
+:::info[Deux stimulations au maximum par sortie]
+Un collier ne délivre jamais plus de deux stimulations pour une même sortie,
+quelle que soit la durée de présence de l'animal dans la zone tampon. Le compteur
+n'est remis à zéro que lorsque l'animal revient à l'intérieur du périmètre.
+:::
 
 ## Notifications
 

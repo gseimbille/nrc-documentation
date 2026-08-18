@@ -25,20 +25,49 @@ team and your collars, and the CLOVIR features appear inside it.
 
 ## Crossing logic
 
-The logic decides when a warning sound is triggered and when an electrical
-stimulus follows. It can be updated remotely, per collar, to suit the farmer.
+The **buffer zone** is the 2-metre band just inside the perimeter boundary. The
+animal reaches it before the boundary itself, and everything below happens there.
 
-| Event | Behaviour |
+Position is determined by GNSS (commonly called GPS). The logic can be updated
+remotely, per collar.
+
+### The animal enters the buffer zone
+
+A continuous warning sound starts immediately — loud (100 dB at 30 cm) and
+high-pitched (2731 Hz).
+
+| Time in the buffer zone | What happens |
 | --- | --- |
-| Returning into the zone | No sound |
-| Reaching the buffer zone on the way out | A strong, continuous warning sound starts |
-| Sound duration | 5 seconds, as a single sound event |
-| Electrical stimulus | If the animal has not moved back within those 5 seconds, one stimulus is delivered |
+| 0 s | Sound starts |
+| 3 s | First electrical stimulation, if the animal is still there |
+| 7 s | Second electrical stimulation, if the animal is still there |
+| beyond | **No further stimulation**, but the sound continues while the animal remains |
 
-**Buffer zone** — the 2-metre band inside the perimeter limit, crossed before the
-boundary itself.
+An animal that steps in and straight back out again in under 3 seconds hears the
+sound only, and receives no stimulation.
 
-**Electrical stimulus** — 0.5 J at 2 kV, instantaneous.
+### The animal returns inside the perimeter
+
+The sound stops the instant it leaves the buffer zone, and no stimulation is
+given. **The logic resets**: two stimulations become available again if the
+animal returns to the buffer zone.
+
+### The animal leaves the perimeter completely
+
+Same sequence as above, but the sound stops after the second stimulation and a
+**message is sent to the farmer**. If both stimulations were already delivered in
+the buffer zone, no further one is given.
+
+### The animal comes back into the perimeter
+
+A **message is sent to the farmer** and the logic resets — sound and both
+stimulations become available again.
+
+:::info[At most two stimulations per excursion]
+A collar never delivers more than two stimulations for a single excursion,
+however long the animal stays in the buffer zone. The counter resets only when
+the animal returns inside the perimeter.
+:::
 
 ## Notifications
 

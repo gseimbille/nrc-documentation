@@ -40,6 +40,7 @@ const sidebars = {
         'clovir/mobile-app',
         'clovir/activation',
         'clovir/operational-process',
+        'clovir/daily-report',
       ],
     },
     {
